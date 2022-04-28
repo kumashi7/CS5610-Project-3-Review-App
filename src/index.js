@@ -21,12 +21,11 @@ ReactDOM.render(
   <NavBar/>
   <Routes>
       <Route path={"/"} element={<App/>}/>
-      {/* <Route path={"/review/:reviewId"} element={<Entry />}/> */}
+      <Route path={"/entry"} element={<Entry/>}/>
       <Route path={"/login"} element={<Login/>} />
       <Route path={"/createUser"} element={<CreateUser/>} />
   </Routes>
   </BrowserRouter>
-      
   </div>
 ,
   document.getElementById('root')

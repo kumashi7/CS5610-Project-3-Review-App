@@ -8,8 +8,8 @@
 
 // export default Entry
 
-export default function CreateUser(props) {
+export default function Entry(props) {
   return (
-      <div>CreateUser</div>
+      <div>Entry</div>
   )
 }
