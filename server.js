@@ -1,8 +1,40 @@
-
 const express = require('express');
 const app = express();
 const path = require('path');
+const mongoose = require('mongoose');
 const uri = 'mongodb+srv://reviewapp2022:qwer1234@reviewappdb.lma2n.mongodb.net/reviewapp_db?retryWrites=true&w=majority';
+// const cookieParser = require('cookie-parser');
+
+const entryRouter = require('./routes/entry');
+const reviewRouter = require('./routes/review');
+const userRouter = require('./routes/user');
+
+mongoose.connect(uri, { useNewUrlParser: true });
+
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'Error connecting to MongoDB:'));
+
+const cors = require('cors');
+// const auth_middleware = require('./routes/middleware/auth_middleware');
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Routers
+app.use('/entry', entryRouter);
+app.use('/review', reviewRouter);
+app.use('/user', userRouter);
+
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
+app.listen(process.env.PORT || 8000, () => {
+  console.log('Starting server');
+});
 
 // const postRouter = require('./routes/posts');
 
@@ -135,19 +167,3 @@ const uri = 'mongodb+srv://reviewapp2022:qwer1234@reviewappdb.lma2n.mongodb.net/
 //   }
 // }
 // run().catch(console.dir);
-
-app.use(express.static(path.join(__dirname, 'build')));
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Routers
-app.use('/entry', require('./routes/entry'));
-
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
-
-app.listen(process.env.PORT || 8000, () => {
-  console.log('Starting server');
-});
