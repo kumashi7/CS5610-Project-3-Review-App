@@ -1,0 +1,12 @@
+.container {
+    border: 1px rgb(128, 128, 128, 0.5) solid;
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top:50px;
+    padding-bottom: 50px;
+}
+
+.click-button{
+    margin-top: 20px;
+}

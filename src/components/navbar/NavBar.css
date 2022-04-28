@@ -19,7 +19,3 @@
     text-decoration: none;
     color: rgb(90, 90, 90);
 }
-
-.flex-nav-item:nth-child(1) {
-    text-decoration: underline;
-}
