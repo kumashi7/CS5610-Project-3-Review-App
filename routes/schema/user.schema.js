@@ -26,12 +26,6 @@ const UserSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Entry'
         }
-    }],
-    reviews: [{
-        review: {
-            type: Schema.Types.ObjectId,
-            ref: 'Review'
-        }
     }]
 });
 

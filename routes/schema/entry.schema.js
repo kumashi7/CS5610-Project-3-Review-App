@@ -22,9 +22,17 @@ const EntrySchema = new Schema({
         ref: 'User'
     },
     reviews: [{
-        review: {
+        user: {
             type: Schema.Types.ObjectId,
-            ref: 'Review'
+            ref: 'User'
+        },
+        content: {
+            type: String,
+            required: true
+        },
+        date: {
+            type: Date,
+            default: Date.now
         }
     }]
 });
