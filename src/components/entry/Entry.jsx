@@ -1,9 +1,15 @@
-import React from 'react'
+// import React from 'react'
 
-function Entry() {
+// function Entry() {
+//   return (
+//     <div>Entry</div>
+//   )
+// }
+
+// export default Entry
+
+export default function CreateUser(props) {
   return (
-    <div>Entry</div>
+      <div>CreateUser</div>
   )
 }
-
-export default Entry
