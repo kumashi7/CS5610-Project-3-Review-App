@@ -1,7 +1,7 @@
-
 const express = require('express');
 const router = express.Router();
 const EntryModel = require('./model/entry.model');
+const UserModel = require('./model/user.model');
 
 // @route    POST /entry
 // @desc     Create a post
@@ -19,15 +19,18 @@ router.post('/', async function(request, response) {
         response.status(401).send("Missing release year.");
     }
     if (!genre) {
-        response.status(401).send("Missing release year.");
+        response.status(401).send("Missing genre.");
     }
-    // TODO: auth
+
     try {
-        // TODO: user find by username
+        const user = UserModel.getUserByUserName("app1")
+
         const entry = {
             title: title,
             release: release,
-            genre: genre
+            genre: genre,
+            content: content,
+            user: user._id
         }
         const dbResponse = await EntryModel.createEntry(entry);
         response.status(200).send(dbResponse);

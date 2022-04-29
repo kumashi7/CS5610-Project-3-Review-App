@@ -8,6 +8,7 @@ const uri = 'mongodb+srv://reviewapp2022:qwer1234@reviewappdb.lma2n.mongodb.net/
 const entryRouter = require('./routes/entry');
 const reviewRouter = require('./routes/review');
 const userRouter = require('./routes/user');
+const homeRouter = require('./routes/home');
 
 mongoose.connect(uri, { useNewUrlParser: true });
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routers
 app.use('/entry', entryRouter);
+app.use('/home', homeRouter);
 // app.use('/review', reviewRouter);
 // app.use('/user', userRouter);
 
