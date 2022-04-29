@@ -25,8 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routers
 app.use('/entry', entryRouter);
-app.use('/review', reviewRouter);
-app.use('/user', userRouter);
+// app.use('/review', reviewRouter);
+// app.use('/user', userRouter);
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
