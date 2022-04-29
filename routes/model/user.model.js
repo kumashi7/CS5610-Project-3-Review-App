@@ -9,6 +9,7 @@ function createUser(user) {
 }
 
 function getUserByUserName(username) {
+    //looking for first user that mactches the username given
     return UserModel.findOne({username: username}).exec();
 }
 

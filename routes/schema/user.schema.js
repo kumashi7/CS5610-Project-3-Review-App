@@ -3,7 +3,7 @@ const Schema = require('mongoose').Schema;
 const UserSchema = new Schema({
     username: {
         type: String,
-        unique: true,
+        unique: true,//make sure username is unique
     },
     password: String,
 }, {
