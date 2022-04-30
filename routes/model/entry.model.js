@@ -14,7 +14,7 @@ function getEntryByGenre(genre) {
     return EntryModel.findOne({genre: genre}).exec();
 }
 
-async function getAllEntry() {
+function getAllEntry() {
     return EntryModel.find({}).exec();
 }
 
