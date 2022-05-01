@@ -26,11 +26,25 @@ function deleteEntryById(id) {
     return EntryModel.deleteOne({_id: id}).exec();
 }
 
+function updateEntryById(id, title, release, genre, content) {
+    return EntryModel.findOneAndUpdate({_id: id}, { "$set": {title: title, release: release, 
+        genre: genre, content: content}}, 
+        null, function (err, docs) {
+            if (err){
+                console.log(err)
+            }
+            else{
+                console.log("Original Doc : ",docs);
+            }
+        });
+}
+
 module.exports = {
     createEntry,
     getEntryById,
     getEntryByRelease,
     getEntryByGenre,
     getAllEntry,
-    deleteEntryById
+    deleteEntryById,
+    updateEntryById
 }

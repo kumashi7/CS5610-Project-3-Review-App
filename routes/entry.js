@@ -65,4 +65,21 @@ router.delete('/:id', async function(request, response) {
         })
 });
 
+router.put('/:id', async function(request, response) {
+    const entryId = request.params.id
+    const title = request.body.title
+    const release = request.body.release;
+    const genre = request.body.genre;
+    const content = request.body.content;
+
+
+    return EntryModel.updateEntryById(entryId, title, release, genre, content)
+        .then(() => {
+                response.status(200).send("update success");
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+});
+
 module.exports = router;

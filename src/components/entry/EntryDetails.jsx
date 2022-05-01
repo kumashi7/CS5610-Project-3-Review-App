@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import Axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
-export default function EntryDetailsPage(props) {
+export default function EntryDetails(props) {
   const navigate = useNavigate();
   const location = useLocation()
   const { id } = location.state
@@ -36,14 +37,15 @@ export default function EntryDetailsPage(props) {
   }
 
   return (
-    <div key={entryDetails._id} className='container'>
+    <div key={id} className='container'>
       <h2>{entryDetails.title}</h2>
       <hr></hr>
       <h3>{entryDetails.genre}</h3><h3>{entryDetails.release}</h3>
       <div>{entryDetails.content}</div>
       <button onClick={ () => deleteEntry({id})}>delete entry</button>
-      {/* <button onClick={ () => updateEntry({id})}>update entry</button> */}
-      <button>update entry</button>
+      <Link to="/updateEntry" state ={{id: id}}>
+        <button>update entry</button>
+      </Link>
   </div>
   )
 }
