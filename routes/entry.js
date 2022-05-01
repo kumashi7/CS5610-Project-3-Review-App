@@ -5,7 +5,7 @@ const UserModel = require('./model/user.model');
 
 // @route    POST /entry
 // @desc     Create a post
-router.post('/', async function(request, response) {
+router.post('/create', async function(request, response) {
     const title = request.body.title;
     const release = request.body.release;
     const genre = request.body.genre;
@@ -38,6 +38,31 @@ router.post('/', async function(request, response) {
         console.error(error.message);
         response.status(400).send(error);
     }
+});
+
+
+router.get('/:id', async function(request, response) {
+    const entryId = request.params.id
+
+    return EntryModel.getEntryById(entryId)
+        .then(entry => {
+                response.status(200).send(entry);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+});
+
+router.delete('/:id', async function(request, response) {
+    const entryId = request.params.id
+
+    return EntryModel.deleteEntryById(entryId)
+        .then(entry => {
+                response.status(200).send(entry);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
 });
 
 module.exports = router;

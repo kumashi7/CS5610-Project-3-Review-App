@@ -10,6 +10,10 @@ function getEntryByRelease(year) {
     return EntryModel.findOne({release: year}).exec();
 }
 
+function getEntryById(id) {
+    return EntryModel.findOne({_id: id}).exec();
+}
+
 function getEntryByGenre(genre) {
     return EntryModel.findOne({genre: genre}).exec();
 }
@@ -18,9 +22,15 @@ function getAllEntry() {
     return EntryModel.find({}).exec();
 }
 
+function deleteEntryById(id) {
+    return EntryModel.deleteOne({_id: id}).exec();
+}
+
 module.exports = {
     createEntry,
+    getEntryById,
     getEntryByRelease,
     getEntryByGenre,
-    getAllEntry
+    getAllEntry,
+    deleteEntryById
 }

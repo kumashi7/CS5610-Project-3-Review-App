@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Entry from './components/entry/CreateEntry';
+import EntryDetails from './components/entry/EntryDetails';
 import Login from './components/login/Login';
 import CreateUser from './components/createUser/createUser';
 import NavBar from './components/navbar/NavBar';
@@ -16,6 +17,7 @@ ReactDOM.render(
       <Route path={"/entry"} element={<Entry/>}/>
       <Route path={"/login"} element={<Login/>} />
       <Route path={"/createUser"} element={<CreateUser/>} />
+      <Route path={"/entryDetails"} element={<EntryDetails/>} />
   </Routes>
   </BrowserRouter>
   </div>

@@ -11,7 +11,7 @@ export default function CreateEntry(props) {
   const [content, setContent] = useState('');
 
   function createNewEntry() {
-      Axios.post('/entry', {title, release, genre, content})
+      Axios.post('/entry/create', {title, release, genre, content})
           .then(response => {
               console.log("Created entry");
               console.log(response.data);
