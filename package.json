@@ -7,7 +7,10 @@
     "@testing-library/react": "^13.1.1",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
+<<<<<<< HEAD
     "cookie-parser": "^1.4.6",
+=======
+>>>>>>> c4297c2021b865440b2b84a8899340d61dfaed49
     "cors": "^2.8.5",
     "express": "^4.18.0",
     "express-session": "^1.17.2",

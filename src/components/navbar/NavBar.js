@@ -46,6 +46,7 @@ export default function NavBar(props) {
                 <a className="flex-nav-item" href="./">HOME</a>
                 <a className="flex-nav-item" href="Login">Log in</a>
                 <a className="flex-nav-item" href="createUser">Sign up</a>
+                <a className="flex-nav-item" href="entry">Create Entry</a>
             </nav>
         </div>
     )

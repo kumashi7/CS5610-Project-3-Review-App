@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 const Schema = require('mongoose').Schema;
+=======
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+>>>>>>> c4297c2021b865440b2b84a8899340d61dfaed49
 
 const UserSchema = new Schema({
     username: {
@@ -43,4 +48,8 @@ module.exports = UserSchema;
 //     }]
 // });
 
+<<<<<<< HEAD
 // module.exports = User = mongoose.module('User', UserSchema);
+=======
+module.exports = UserSchema;
+>>>>>>> c4297c2021b865440b2b84a8899340d61dfaed49

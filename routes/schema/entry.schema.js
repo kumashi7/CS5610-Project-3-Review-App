@@ -1,4 +1,4 @@
-const mongoose = require('mogoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const EntrySchema = new Schema({
@@ -37,4 +37,4 @@ const EntrySchema = new Schema({
     }]
 });
 
-module.exports = Entry = mongoose.module('Entry', EntrySchema);
+module.exports = EntrySchema;

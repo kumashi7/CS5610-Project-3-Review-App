@@ -1,40 +1,29 @@
-// import React from "react";
-// import {BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-// // import { Provider } from 'react-redux';
-
-// import './App.css';
-
-// import Entry from './components/entry/Entry.jsx';
-// import Landing from './components/landing/Landing.jsx';
-
-// function App() {
-//     return (
-//         <main>
-//             <Router>
-//                 <nav>
-//                     <Link to='/'> Home Page</Link>
-//                     <Link to='/entry'> Create Entry</Link>
-//                 </nav>
-//             <Routes>
-//                 <Route path='/' element={<Landing/>} />
-//                 <Route path='/entry' element={<Entry/>} />
-//             </Routes>
-//             </Router>
-//         </main>
-//     );
-// }
-
-// export default App;
-
-
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from 'axios';
 
 import './App.css'
+import EntryCard from "./components/entry/EntryCard";
 
 function App() {
+    const [entryList, setEntryList] = useState([]);
+    useEffect(() => {
+        Axios.get('/entry/')
+            .then(response => {
+                const newList = [...response.data];
+                console.log(newList);
+                setEntryList(newList);
+            });
+    },[]);
+
+    if (!entryList || entryList.length === 0) {
+        return (<div>
+            Loading data, please wait...
+        </div>)
+    }
+
     return (
         <div>
-            <h1>This is home page</h1>
+            <EntryCard list={entryList} />
         </div>
     );
 }
