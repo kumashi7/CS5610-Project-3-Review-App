@@ -1,15 +1,3 @@
-// export default function Login(props) {
-//     return (
-//         <div>Login</div>
-//     )
-
-// }
-
-// export default function CreateUser(props) {
-//     return (
-//         <div>CreateUser</div>
-//     )
-// }
 import React, {useState} from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router';
@@ -52,10 +40,6 @@ export default function CreateUser(props) {
         </div>
 
     )
-<<<<<<< HEAD
 
 
 } 
-=======
-}
->>>>>>> c4297c2021b865440b2b84a8899340d61dfaed49

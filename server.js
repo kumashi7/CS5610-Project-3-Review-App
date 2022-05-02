@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser');
 
 const entryRouter = require('./routes/entry');
 const userRouter = require('./routes/user');
+const reviewRouter = require('./routes/review');
 
 mongoose.connect(uri, { useNewUrlParser: true });
 
@@ -29,8 +30,8 @@ app.use(cors({
 // app.use(auth_middleware);
 // Routers
 app.use('/entry', entryRouter);
-// app.use('/review', reviewRouter);
-// app.use('/user', userRouter);
+app.use('/review', reviewRouter);
+app.use('/user', userRouter);
 
 app.get('*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));

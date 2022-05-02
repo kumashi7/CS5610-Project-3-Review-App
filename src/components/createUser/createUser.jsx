@@ -1,8 +1,3 @@
-// export default function CreateUser(props) {
-//     return (
-//         <div>CreateUser</div>
-//     )
-// }
 import React, {useState} from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router';
