@@ -85,8 +85,6 @@ router.put('/:id', async function(request, response) {
         })
 });
 
-// @route    Get /home
-// @desc     Get entries
 router.get('/', function(request, response) {
     try {
         EntryModel.getAllEntry().then(function(entry) {
