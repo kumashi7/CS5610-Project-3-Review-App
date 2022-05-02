@@ -3,7 +3,7 @@ const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
 const uri = 'mongodb+srv://reviewapp2022:qwer1234@reviewappdb.lma2n.mongodb.net/reviewapp_db?retryWrites=true&w=majority';
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 const entryRouter = require('./routes/entry');
 const reviewRouter = require('./routes/review');
@@ -16,13 +16,18 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Error connecting to MongoDB:'));
 
 const cors = require('cors');
-// const auth_middleware = require('./routes/middleware/auth_middleware');
+// const auth_middleware = require('./routes/middlware/auth_middleware');
 
 app.use(express.static(path.join(__dirname, 'build')));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());//cookie-parser is the middleware that lets directly intercept and modify a request coming to our Express/Node app.
 
+app.use(cors({
+  origin: '*',
+}));
+
+// app.use(auth_middleware);
 // Routers
 app.use('/entry', entryRouter);
 app.use('/review', reviewRouter);
