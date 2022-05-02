@@ -1,10 +1,13 @@
 .container {
     margin-top: 20px;
     border: 1px rgb(128, 128, 128, 0.5) solid;
-    display: flex;
+
     justify-content: center;
     align-items: center;
     padding: 20px;
+}
+.flex{
+    display: flex;
 }
 
 h3 {

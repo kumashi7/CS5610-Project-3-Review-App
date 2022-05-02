@@ -5,14 +5,14 @@ import './Login.css';
 
 export default function CreateUser(props) {
 
-
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    function createNewUser() {
+    function logIn() {
         Axios.post('/user/authenticate', {username, password})
             .then(response => {
+                console.log("login: ");
                 console.log(response.data);
                 navigate('/');
             })
@@ -33,7 +33,7 @@ export default function CreateUser(props) {
             </h5>
             <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
             <div>
-                <button onClick={createNewUser} className="click-button">
+                <button onClick={logIn} className="click-button">
                     Log in
                 </button>
             </div>

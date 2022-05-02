@@ -16,7 +16,7 @@ function EntryCard({list}) {
 
   return list.map(({title, genre, release, content, reviews, _id}) => 
   <Link to="/entryDetails" state ={{id: _id}}>
-    <div key={_id} className='container'>
+    <div key={_id} className='container flex'>
       <h2>{title}</h2>
       <hr></hr>
       <h3>{genre}</h3><h3>{release}</h3>
