@@ -7,10 +7,10 @@ import EntryCard from "./components/entry/EntryCard";
 function App() {
     const [entryList, setEntryList] = useState([]);
     useEffect(() => {
-         // Retrieve entries from database
-        Axios.get('/home')
+        Axios.get('/entry/')
             .then(response => {
                 const newList = [...response.data];
+                console.log(newList);
                 setEntryList(newList);
             });
     },[]);

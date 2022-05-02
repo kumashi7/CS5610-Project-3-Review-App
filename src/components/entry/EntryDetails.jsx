@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 import Axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import CommentItem from '../comment/CommentItem';
 
 export default function EntryDetails(props) {
   const navigate = useNavigate();
@@ -36,8 +37,17 @@ export default function EntryDetails(props) {
     </div>)
   }
 
+  const comments = [{
+    content: "hello",
+    date: Date.now
+  },
+  {
+    content: "lkjfldjfalj",
+    date: Date.now
+  }];
+
   return (
-    <div key={id} className='container'>
+    <div key={id}>
       <h2>{entryDetails.title}</h2>
       <hr></hr>
       <h3>{entryDetails.genre}</h3><h3>{entryDetails.release}</h3>
@@ -46,6 +56,8 @@ export default function EntryDetails(props) {
       <Link to="/updateEntry" state ={{id: id}}>
         <button>update entry</button>
       </Link>
+      <br></br>
+      <CommentItem list={comments}/>
   </div>
   )
 }

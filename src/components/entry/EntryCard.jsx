@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
-import './EntryCard.css'
+import './Entry.css'
 
 // Entry card item
 function EntryCard({list}) {
