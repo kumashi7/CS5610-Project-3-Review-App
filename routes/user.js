@@ -1,11 +1,45 @@
 const express = require('express');
 const UserModel = require('./model/user.model');
 const router = express.Router();
+const auth_middleware = require('./middlware/auth_middleware');
+const jwt = require('jsonwebtoken');
 
-router.get('/', function(request, response){
-    const username = request.params.username;
-    return response.status(200).send("get");
+//for registered user 
+router.post('/authenticate', function(request, response){
+    const {username,password} = request.body;
+    return UserModel.getUserByUserName(username)
+        .then(user => {
+            console.log(user);
+            if(user.password === password){
+                const payload = {
+                    username: username,
+                };
+                const token = jwt.sign(payload, "SUPER_SECRET", {
+                    expiresIn: '14d'
+                });
+                return response.cookie('token', token, {httpOnly: true})
+                    .status(200).send({username});
+            }
+            return response.status(401).send("Invalid password.");
+        })
+        .catch(error => {
+            return response.status(400).send(error);//uncreated user will get 400  bad request
+        })
+})
 
+//whether the current user is logged in
+router.get('/isLoggedIn', auth_middleware, function(request, response) {
+    console.log("send back response - isLoggedIn: " + request.username);
+    return response.status(200).send({username: request.username});
+})
+
+router.post('/logout', auth_middleware, function(request, response) {
+    //set it expire immediately
+    const token = jwt.sign({}, "SUPER_SECRET", {
+        expiresIn: '0d'
+    });
+    return response.cookie('token', token, {httpOnly: true})
+        .status(200).send();
 })
 
 router.get('/:username', function(request, response){
@@ -18,7 +52,6 @@ router.get('/:username', function(request, response){
         .catch(error => {
             response.status(400).send(error);
         })
-
 })
 
 router.post('/', function(request, response){
@@ -34,11 +67,30 @@ router.post('/', function(request, response){
     
     return UserModel.createUser(user)
         .then(dbResponse => {
-            response.status(200).send(dbResponse);
+            if (dbResponse.password === password) {
+                const payload = {
+                    username: username,
+                };
+                const token = jwt.sign(payload, "SUPER_SECRET", {
+                    expiresIn: '14d'
+                });
+                console.log("successfully create!");
+                return response.cookie('token', token, {httpOnly: true})
+                    .status(200).send({username});
+            } 
+
+            return response.status(401).send("Invalid password");
         })
         .catch(error => {
-            response.status(400).send(error);
+            response.status(400).send(error)
         })
+
+
+        //     response.status(200).send(dbResponse);
+        // })
+        // .catch(error => {
+        //     response.status(400).send(error);
+        // })
 })
 
 module.exports = router;
