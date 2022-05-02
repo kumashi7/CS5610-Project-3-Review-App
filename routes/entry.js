@@ -58,7 +58,7 @@ router.delete('/:id', async function(request, response) {
 
     return EntryModel.deleteEntryById(entryId)
         .then(entry => {
-                response.status(200).send(entry);
+            response.status(200).send(entry);
         })
         .catch(error => {
             response.status(400).send(error);
@@ -75,9 +75,12 @@ router.put('/:id', async function(request, response) {
 
     return EntryModel.updateEntryById(entryId, title, release, genre, content)
         .then(() => {
-                response.status(200).send("update success");
+            console.log("update success")
+            response.status(200).send("update success");
         })
         .catch(error => {
+            console.log("some error happend in put")
+            console.log(error)
             response.status(400).send(error);
         })
 });

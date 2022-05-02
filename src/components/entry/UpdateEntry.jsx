@@ -30,10 +30,10 @@ export default function UpdateEntry(props) {
         </div>)
     }
 
-    function updateEntryAxios(id, title, genre, release, content) {
+    function updateEntryAxios(id, title, genre, release, content, event) {
+        event.preventDefault()
         Axios.put('/entry/' + id, {title, genre, release, content})
             .then(response => {
-                console.log("==========================updated entry==================================");
                 console.log(response.data);
                 navigate('/');
 
@@ -44,8 +44,8 @@ export default function UpdateEntry(props) {
     return (
         <div key={id} className='container'>
             
-            <form onSubmit={() => updateEntryAxios(id, title, genre, 
-                release, content)}>
+            <form onSubmit={(event) => updateEntryAxios(id, title, genre, 
+                release, content, event)}>
                 <label for="title">title:</label>
                 <input value={title} onChange={(e) => setTitle(e.target.value)} 
                     type="text" id="title" name="title"/>
