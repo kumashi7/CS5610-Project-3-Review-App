@@ -22,18 +22,8 @@ const EntrySchema = new Schema({
         ref: 'User'
     },
     reviews: [{
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        },
-        content: {
-            type: String,
-            required: true
-        },
-        date: {
-            type: Date,
-            default: Date.now
-        }
+        type: Schema.Types.ObjectId,
+        ref: 'Review'
     }]
 });
 

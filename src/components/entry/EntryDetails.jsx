@@ -3,13 +3,16 @@ import { useLocation } from 'react-router-dom'
 import Axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import CommentItem from '../comment/CommentItem';
+
+import ReviewItem from '../review/ReviewItem';
+import CreateReview from '../review/CreateReview';
 
 export default function EntryDetails(props) {
   const navigate = useNavigate();
   const location = useLocation()
   const { id } = location.state
   const [entryDetails, setEntryDetails] = useState({});
+  const [reviews, setReviews] = useState([]);
 
   function deleteEntry({id}) {
     Axios.delete('/entry/' + id)
@@ -26,8 +29,16 @@ export default function EntryDetails(props) {
     // Retrieve entries from database
   Axios.get('/entry/' +  id)
       .then(response => {
-          console.log(response.data)
           setEntryDetails(response.data)
+      });
+  },[]);
+
+
+  useEffect(() => {
+    // Retrieve reviews from database
+  Axios.get('/entry/' +  id + '/review/')
+      .then(response => {
+          setReviews(response.data)
       });
   },[]);
 
@@ -37,14 +48,6 @@ export default function EntryDetails(props) {
     </div>)
   }
 
-  const comments = [{
-    content: "hello",
-    date: Date.now
-  },
-  {
-    content: "lkjfldjfalj",
-    date: Date.now
-  }];
 
   return (
     <div key={id}>
@@ -52,12 +55,16 @@ export default function EntryDetails(props) {
       <hr></hr>
       <h3>{entryDetails.genre}</h3><h3>{entryDetails.release}</h3>
       <div>{entryDetails.content}</div>
+      <br></br><br></br>
       <button onClick={ () => deleteEntry({id})}>delete entry</button>
       <Link to="/updateEntry" state ={{id: id}}>
         <button>update entry</button>
       </Link>
+      <br></br><br></br>
+      <CreateReview entryId={id} />
+      <hr></hr>
       <br></br>
-      <CommentItem list={comments}/>
+      <ReviewItem list={reviews} entryId={id}/>
   </div>
   )
 }

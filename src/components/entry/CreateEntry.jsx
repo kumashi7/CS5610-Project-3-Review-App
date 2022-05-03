@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router';
 
@@ -16,7 +16,6 @@ export default function CreateEntry(props) {
               console.log("Created entry");
               console.log(response.data);
               navigate('/');
-
           })
           .catch(error => console.log(error));
   }

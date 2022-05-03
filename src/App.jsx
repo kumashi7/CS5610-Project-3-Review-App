@@ -10,7 +10,7 @@ function App() {
         Axios.get('/entry/')
             .then(response => {
                 const newList = [...response.data];
-                console.log(newList);
+                // console.log(newList);
                 setEntryList(newList);
             });
     },[]);

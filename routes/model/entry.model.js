@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const EntrySchema = require('../schema/entry.schema');
 const EntryModel = mongoose.model("Entry", EntrySchema);
 
+const ReviewModel = require('./review.model');
+
 function createEntry(entry) {
     return EntryModel.create(entry);
 }
@@ -18,6 +20,10 @@ function getEntryByGenre(genre) {
     return EntryModel.findOne({genre: genre}).exec();
 }
 
+function getEntryWithReviews(id) {
+    return EntryModel.findById({_id: id}).populate('reviews').exec();
+}
+
 function getAllEntry() {
     return EntryModel.find({}).exec();
 }
@@ -31,6 +37,26 @@ function updateEntryById(id, title, release, genre, content) {
         genre: genre, content: content}}, null);
 }
 
+function updateEntryReviewById(id, reviews) {
+    return EntryModel.findOneAndUpdate({_id: id}, { "$set": {reviews: reviews}}, null);
+}
+
+function addReviewToEntry(id, review) {
+    ReviewModel.createReview(review)
+    .then(returnReview => {
+        EntryModel.findById(id, (error, entry) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log("im here")
+                console.log(returnReview);
+                entry.reviews.push(returnReview._id);
+                entry.save();
+            }
+        })
+    });
+}
+
 module.exports = {
     createEntry,
     getEntryById,
@@ -38,5 +64,8 @@ module.exports = {
     getEntryByGenre,
     getAllEntry,
     deleteEntryById,
-    updateEntryById
+    updateEntryById,
+    addReviewToEntry,
+    getEntryWithReviews,
+    updateEntryReviewById
 }
