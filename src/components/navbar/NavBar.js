@@ -13,15 +13,16 @@ export default function NavBar(props) {
     useEffect(function() {
         Axios.get('/user/isLoggedIn')
             .then(response => {
-                console.log("response: " + response.data)
-                setUsername(response.data.username)
+                console.log(response);
+                setUsername(response.data.username);
             })
             .catch(error => console.log("User is not logged in"));
-    }, [])
+    })
 
     function logout() {
         Axios.post('/user/logout')
         .then(response => {
+            // setUsername(null);
             navigate('/')
         })
         .catch(error => console.log("Error logging out"));

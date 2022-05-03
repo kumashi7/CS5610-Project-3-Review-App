@@ -42,7 +42,7 @@ export default function UpdateEntry(props) {
     }
 
     return (
-        <div key={id} className='container'>
+        <div key={id} className='container flex'>
             
             <form onSubmit={(event) => updateEntryAxios(id, title, genre, 
                 release, content, event)}>
