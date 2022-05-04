@@ -139,7 +139,7 @@ router.get('/:id/review/', function(request, response) {
         response.status(200).send(entry.reviews);
     })
     .catch(error => {
-        response.status(400).send(entry.reviews);
+        response.status(400).send(error);
     })
 });
 
