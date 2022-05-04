@@ -1,29 +1,37 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './Review.css'
 import Axios from 'axios';
 
-
 function deleteReview(pair) {
   console.log("entryid + reviewId");
-  // console.log(pair.entryId);
-  // console.log(pair.reviewId);
   const entryid = pair.entryId;
   const reviewid = pair.reviewId;
   Axios.delete('/entry/' + entryid + '/' + reviewid)
       .then(response => {
-          // console.log("Deleted review");
           console.log(response.data);
       })
       .catch(error => console.log(error));
 }
 
 function ReviewItem(props) {
+  const [visitUser, setVisitUser] = useState('');
+    // check if user can edit or delete
+    useEffect(() => {
+      Axios.get('/user/userId/')
+      .then(response => {
+        console.log("current user: " + response.data.id);
+        const currentUser = response.data.id;
+        setVisitUser(currentUser)
+      });
+    }, []);
+  
+  
   let entryId = props.entryId;
-  return props.list.map(({content, date, _id}) => 
+  return props.list.map(({content, date, _id, user}) => 
     <div>
       <p>{date}</p>
       <h6>{content}</h6>
-      <button onClick={() => deleteReview({entryId: entryId, reviewId: _id})}>delete review</button>
+      { user === visitUser ? <button onClick={() => deleteReview({entryId: entryId, reviewId: _id})}>delete review</button> : <p></p>}
       <hr></hr>
     </div>
   );

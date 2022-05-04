@@ -8,8 +8,6 @@ export default function CreateComment({entryId}) {
   function createReview() {
     Axios.post('/entry/' + entryId + '/review/', {content})
         .then(response => {
-            console.log("------------- review added -------------");
-            console.log(response.data);
             window.location.reload();
         })
         .catch(error => console.log(error));

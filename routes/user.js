@@ -33,6 +33,17 @@ router.get('/isLoggedIn', auth_middleware, function(request, response) {
     return response.status(200).send({username: request.username});
 })
 
+router.get('/userId', auth_middleware, function(request, response) {
+    const username  = request.username;
+    return UserModel.getUserByUserName(username)
+        .then(user => {
+            response.status(200).send({id: user._id});
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
+})
+
 router.post('/logout', auth_middleware, function(request, response) {
     //set it expire immediately
     const token = jwt.sign({}, "SUPER_SECRET", {

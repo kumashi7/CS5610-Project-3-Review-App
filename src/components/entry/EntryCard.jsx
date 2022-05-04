@@ -5,16 +5,8 @@ import './Entry.css'
 
 // Entry card item
 function EntryCard({list}) {
-  const [edit, setEdit] = useState ({
-    id: null,
-    value: ''
-  })
 
-  // useEffect(() => {
-  //   console.log(list);
-  // },[]);
-
-  return list.map(({title, genre, release, content, reviews, _id}) => 
+  return list.map(({title, genre, release, content, _id}) => 
   <Link to="/entryDetails" state ={{id: _id}}>
     <div key={_id} className='container flex'>
       <h2>{title}</h2>

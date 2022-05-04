@@ -7,8 +7,6 @@ function createReview(review) {
 }
 
 function deleteReviewById(id) {
-    // console.log("inside model")
-    // console.log(id)
     return ReviewModel.deleteOne({_id: id}).exec();
 }
 

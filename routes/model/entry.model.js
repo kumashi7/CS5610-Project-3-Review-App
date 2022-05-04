@@ -48,7 +48,6 @@ function addReviewToEntry(id, review) {
             if (error) {
                 console.log(error);
             } else {
-                console.log("im here")
                 console.log(returnReview);
                 entry.reviews.push(returnReview._id);
                 entry.save();
