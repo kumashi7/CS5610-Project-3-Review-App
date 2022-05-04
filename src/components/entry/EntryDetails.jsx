@@ -40,7 +40,7 @@ export default function EntryDetails(props) {
       .then(response => {
           setReviews(response.data)
       });
-  },[]);
+  });
 
   if (!entryDetails) {
     return (<div>
