@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const uri = process.env.MONGODB_URI || 'mongodb://127.0.0.1/collection_name';
+const uri = 'mongodb+srv://reviewapp2022:qwer1234@reviewappdb.lma2n.mongodb.net/reviewapp_db?retryWrites=true&w=majority';
 const cookieParser = require('cookie-parser');
 
 const entryRouter = require('./routes/entry');
