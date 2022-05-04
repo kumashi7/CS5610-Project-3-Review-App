@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.get('/entry/:id/review/', function(request, response) {
     try {
+        const id = request.params.id;
         console.log("XXXXXXXXXXXXX");
     } catch (error) {
         console.error(error.message);

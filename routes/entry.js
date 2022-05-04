@@ -3,10 +3,10 @@ const router = express.Router();
 const EntryModel = require('./model/entry.model');
 const ReviewModel = require('./model/review.model');
 const UserModel = require('./model/user.model');
+const auth = require('./middlware/auth_middleware');
 
-// @route    POST /entry
-// @desc     Create a post
-router.post('/create', async function(request, response) {
+// create entry
+router.post('/create', auth, async function(request, response) {
     const title = request.body.title;
     const release = request.body.release;
     const genre = request.body.genre;
@@ -24,7 +24,7 @@ router.post('/create', async function(request, response) {
     }
 
     try {
-        UserModel.getUserByUserName("app1")
+        UserModel.getUserByUserName(username)
             .then(user => {
                 console.log("--------- user: " + user.username);
                 const entry = {
@@ -45,7 +45,7 @@ router.post('/create', async function(request, response) {
     }
 });
 
-
+// get entry
 router.get('/:id', async function(request, response) {
     const entryId = request.params.id
 
@@ -58,6 +58,7 @@ router.get('/:id', async function(request, response) {
         })
 });
 
+// delete entry
 router.delete('/:id', async function(request, response) {
     const entryId = request.params.id
 
@@ -70,6 +71,7 @@ router.delete('/:id', async function(request, response) {
         })
 });
 
+// update entry
 router.put('/:id', async function(request, response) {
     const entryId = request.params.id
     const title = request.body.title
@@ -90,6 +92,7 @@ router.put('/:id', async function(request, response) {
         })
 });
 
+// get all entries
 router.get('/', function(request, response) {
     try {
         EntryModel.getAllEntry().then(function(entry) {
@@ -102,26 +105,18 @@ router.get('/', function(request, response) {
     }
 });
 
-// get all reviews of an entry
-// router.get('/:id/review/', function(request, response) {
-//     try {
-//         response.send("hello");
-//     } catch (error) {
-//         console.error(error.message);
-//         response.status(400).send(error);
-//     }
-// });
-
 // Add review
-router.post('/:id/review/', function(request, response) {
+router.post('/:id/review/', auth, function(request, response) {
     try {
         const content = request.body.content;
         const entryId = request.params.id;
+        const username = request.username;
+
         if (!content) {
             response.status(401).send("Missing content.");
         }
 
-        UserModel.getUserByUserName("app1")
+        UserModel.getUserByUserName(username)
             .then(user => {
                 console.log("--------- comment user: " + user.username);
                 const review = {
@@ -141,8 +136,6 @@ router.get('/:id/review/', function(request, response) {
     const entryId = request.params.id;
     return EntryModel.getEntryWithReviews(entryId)
     .then(entry => {
-        // console.log("reviews!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        // console.log(entry.reviews);
         response.status(200).send(entry.reviews);
     })
     .catch(error => {
@@ -150,7 +143,7 @@ router.get('/:id/review/', function(request, response) {
     })
 });
 
-
+// delete review
 router.delete('/:id/:reviewid', async function(request, response) {
     try {
         const entryId = request.params.id;

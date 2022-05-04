@@ -44,6 +44,5 @@ export default function CreateEntry(props) {
               Create Movie Entry
           </button>
       </div>
-
   )
 }

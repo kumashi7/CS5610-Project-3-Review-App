@@ -5,13 +5,13 @@ import Axios from 'axios';
 
 function deleteReview(pair) {
   console.log("entryid + reviewId");
-  console.log(pair.entryId);
-  console.log(pair.reviewId);
+  // console.log(pair.entryId);
+  // console.log(pair.reviewId);
   const entryid = pair.entryId;
   const reviewid = pair.reviewId;
   Axios.delete('/entry/' + entryid + '/' + reviewid)
       .then(response => {
-          console.log("Deleted review");
+          // console.log("Deleted review");
           console.log(response.data);
       })
       .catch(error => console.log(error));
