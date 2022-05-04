@@ -69,7 +69,7 @@ export default function EntryDetails(props) {
       {entryDetails.user === currentUserId ? <button onClick={ () => deleteEntry({id})}>delete entry</button> : <p></p>}
       {entryDetails.user === currentUserId ? <Link to="/updateEntry" state ={{id: id}}><button>update entry</button></Link> : <p></p>}
       <br></br><br></br>
-      <CreateReview entryId={id} />
+      {currentUserId !== undefined ? <CreateReview entryId={id} /> : <p></p>}
       <hr></hr>
       <br></br>
       <ReviewItem list={reviews} entryId={id}/>
