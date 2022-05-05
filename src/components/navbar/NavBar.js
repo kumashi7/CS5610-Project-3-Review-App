@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router';
 import "./NavBar.css"
+import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
 
@@ -36,7 +37,9 @@ export default function NavBar(props) {
                 {/* ref need to be changed? */}
                 <a className="flex-nav-item" href="./">{username}</a>
                 <a className="flex-nav-item" href="./" onClick={logout}>Log out</a>
-                <a className="flex-nav-item" href="entry">Create Entry</a>
+                <Link to="/entry">
+                    <a className="flex-nav-item">Create Entry</a>
+                </Link>
             </nav>
         </div>)
     }
