@@ -1,8 +1,7 @@
-
 const express = require('express');
 const router = express.Router();
 
-router.get('/entry/:id/review/', function(request, response) {
+router.get('/entry/:id/review/', function (request, response) {
     try {
         const id = request.params.id;
     } catch (error) {
@@ -12,7 +11,7 @@ router.get('/entry/:id/review/', function(request, response) {
 });
 
 // create review to an entry
-router.post('/entry/:id/review/', function(request, response) {
+router.post('/entry/:id/review/', function (request, response) {
     try {
         const content = request.body.content;
         if (!content) {

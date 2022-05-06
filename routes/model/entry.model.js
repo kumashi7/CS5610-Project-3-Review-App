@@ -9,19 +9,27 @@ function createEntry(entry) {
 }
 
 function getEntryByRelease(year) {
-    return EntryModel.findOne({release: year}).exec();
+    return EntryModel.findOne({
+        release: year
+    }).exec();
 }
 
 function getEntryById(id) {
-    return EntryModel.findOne({_id: id}).exec();
+    return EntryModel.findOne({
+        _id: id
+    }).exec();
 }
 
 function getEntryByGenre(genre) {
-    return EntryModel.findOne({genre: genre}).exec();
+    return EntryModel.findOne({
+        genre: genre
+    }).exec();
 }
 
 function getEntryWithReviews(id) {
-    return EntryModel.findById({_id: id}).populate('reviews').exec();
+    return EntryModel.findById({
+        _id: id
+    }).populate('reviews').exec();
 }
 
 function getAllEntry() {
@@ -29,31 +37,47 @@ function getAllEntry() {
 }
 
 function deleteEntryById(id) {
-    return EntryModel.deleteOne({_id: id}).exec();
+    return EntryModel.deleteOne({
+        _id: id
+    }).exec();
 }
 
 function updateEntryById(id, title, release, genre, content) {
-    return EntryModel.findOneAndUpdate({_id: id}, { "$set": {title: title, release: release, 
-        genre: genre, content: content}}, null);
+    return EntryModel.findOneAndUpdate({
+        _id: id
+    }, {
+        "$set": {
+            title: title,
+            release: release,
+            genre: genre,
+            content: content
+        }
+    }, null);
 }
 
 function updateEntryReviewById(id, reviews) {
-    return EntryModel.findOneAndUpdate({_id: id}, { "$set": {reviews: reviews}}, null);
+    return EntryModel.findOneAndUpdate({
+        _id: id
+    }, {
+        "$set": {
+            reviews: reviews
+        }
+    }, null);
 }
 
 function addReviewToEntry(id, review) {
     ReviewModel.createReview(review)
-    .then(returnReview => {
-        EntryModel.findById(id, (error, entry) => {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log(returnReview);
-                entry.reviews.push(returnReview._id);
-                entry.save();
-            }
-        })
-    });
+        .then(returnReview => {
+            EntryModel.findById(id, (error, entry) => {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(returnReview);
+                    entry.reviews.push(returnReview._id);
+                    entry.save();
+                }
+            })
+        });
 }
 
 module.exports = {
