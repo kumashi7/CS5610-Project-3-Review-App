@@ -23,7 +23,7 @@ function App() {
 
     return (
         <div className="bg">
-            <EntryCard list={entryList} />
+            <EntryCard className="entryCard" list={entryList} />
         </div>
 
     );

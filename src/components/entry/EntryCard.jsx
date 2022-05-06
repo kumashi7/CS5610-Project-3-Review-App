@@ -12,10 +12,10 @@ function EntryCard({list}) {
       <h2>{title}</h2>
       <hr></hr>
       <div className="entryYearGenre">
-        <h4>{release}</h4>
+        <h4 className="year">{release}</h4>
         <h4>{genre}</h4>
       </div>
-      <div>{content}</div>
+      <div className="contents">{content}</div>
     </div>
   </Link>
   );

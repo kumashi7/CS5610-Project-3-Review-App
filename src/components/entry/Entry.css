@@ -12,14 +12,25 @@
 }
 
 .entry {
-    width: 800px;
+    width: 70%;
     opacity: 1.0;
     display: flex;
     padding: 20px;
     flex-direction: column;
+    border: 1px solid black;
+    border-radius: 20px;
 }
 .entryYearGenre {
     display: flex;
+}
+
+.year{
+    color: saddlebrown;
+    margin-right: 50px;
+}
+
+.contents {
+    color: black;
 }
 
 .movieName {
