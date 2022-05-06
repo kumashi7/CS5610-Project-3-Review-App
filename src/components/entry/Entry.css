@@ -2,12 +2,23 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.container-entry {
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    width:70%;
+    border: 1px solid seagreen;
+    margin: 50px auto auto;
+}
+
 .entry {
     width: 800px;
     opacity: 1.0;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
 }
-
-.flex{
+.entryYearGenre {
     display: flex;
 }
 
@@ -43,6 +54,15 @@ h3 {
     font-size: 25px;
     color: orange;
     opacity: 1.0;
+}
+
+h2 {
+    color: seagreen;
+}
+
+h4
+{
+    color: orange;
 }
 
 

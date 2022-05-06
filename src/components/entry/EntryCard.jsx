@@ -11,7 +11,10 @@ function EntryCard({list}) {
     <div key={_id} className="entry">
       <h2>{title}</h2>
       <hr></hr>
-      <h3>{genre}</h3><h3>{release}</h3>
+      <div className="entryYearGenre">
+        <h4>{release}</h4>
+        <h4>{genre}</h4>
+      </div>
       <div>{content}</div>
     </div>
   </Link>
