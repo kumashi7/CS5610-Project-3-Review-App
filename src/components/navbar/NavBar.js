@@ -33,13 +33,17 @@ export default function NavBar(props) {
         <div>
             <nav id="navbar">
                 <div className="logo">
-                    <h2>FRESH PINEAPPLE</h2>
+                    <a href="./">FRESH PINEAPPLE</a>
                 </div>
-                <ul className="nav-links">
-                    <li>
-                        <a href="./">HOME</a>
-                        {/* ref need to be changed? */}
-                    </li>
+                <div className="dropdown">
+                <button className="dropbtn nav-font">{username}</button>
+                    <div className="dropdown-content nav-font">
+                        <a href="entry">Create Entry</a>
+                        <a href="./" onClick={logout}>Log out</a>
+                    </div>
+                </div>
+
+                {/* <ul className="nav-links">
                     <li>
                         <a href="./">{username}</a>
                     </li>
@@ -49,12 +53,7 @@ export default function NavBar(props) {
                     <li>
                         <a href="entry">CREATE ENTRY</a>
                     </li>
-                </ul>
-                <div className="threeStripes">
-                    <div className="line1"></div>
-                    <div className="line2"></div>
-                    <div className="line3"></div>
-                </div>
+                </ul> */}
             </nav>
         </div>)
     }
@@ -63,12 +62,10 @@ export default function NavBar(props) {
     return (
         <div className="body">
             <nav id="navbar">
-                <div className="logo"><h2>FRESH PINEAPPLE</h2>
+                <div className="logo">
+                    <a href="./">FRESH PINEAPPLE</a>
                 </div>
                 <ul className="nav-links">
-                    <li>
-                        <a href="./">HOME</a>
-                    </li>
                     <li>
                         <a href="Login">LOG IN</a>
                     </li>
@@ -76,29 +73,7 @@ export default function NavBar(props) {
                         <a href="createUser">SIGN UP</a>
                     </li>
                 </ul>
-                <div className="threeStripes">
-                    <div className="line1"></div>
-                    <div className="line2"></div>
-                    <div className="line3"></div>
-                </div>
             </nav>
         </div>
     )
-
-    // const navSlide = () => {
-    //     const threeStripes = document.querySelector('.threeStripes');
-    //     const nav = document.querySelector('.nav-links');
-    //     const navLinks = document.querySelectorAll('.nav-links li');
-    //
-    //     threeStripes.addEventListener('click', () => {
-    //         nav.classList.toggle('nav-active');
-    //     });
-    //
-    //     navLinks.forEach((link, index) => {
-    //         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 5}s`;
-    //         console.log(index / 5);
-    //     });
-    // }
-    //
-    // navSlide();
 }

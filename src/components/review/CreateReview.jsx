@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Axios from 'axios';
-
+import './createReview.css'
 
 export default function CreateComment({entryId}) {
   const [content, setContent] = useState('');
@@ -14,7 +14,7 @@ export default function CreateComment({entryId}) {
   }
 
   return (
-    <div>
+    <div className='addReview'>
         <input placeholder='Leave a Review here...' onChange={e => setContent(e.target.value)}></input>
         <br></br><br></br>
         <button onClick={createReview}>Add Review</button>
