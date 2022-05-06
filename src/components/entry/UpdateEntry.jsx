@@ -42,24 +42,24 @@ export default function UpdateEntry(props) {
     }
 
     return (
-        <div key={id} className='container flex'>
+        <div key={id} className="container">
             
-            <form onSubmit={(event) => updateEntryAxios(id, title, genre, 
+            <form className="form" onSubmit={(event) => updateEntryAxios(id, title, genre,
                 release, content, event)}>
-                <label for="title">title:</label>
-                <input value={title} onChange={(e) => setTitle(e.target.value)} 
-                    type="text" id="title" name="title"/>
-                <label for="genre">genre:</label>
-                <input type="text" id="genre" name="genre" value={genre} 
+                <h2>UPDATE ENTRY</h2>
+                {/*<label for="title">title:</label>*/}
+                <input value={title} onChange={(e) => setTitle(e.target.value)}
+                    type="text" id="title" name="title" className="box" placeholder="Title"/>
+                {/*<label for="genre">genre:</label>*/}
+                <input type="text" id="genre" name="genre" className="box" value={genre}
                     onChange={(e) => setGenre(e.target.value)} />
-                <label for="release">release:</label>
-                <input type="number" id="release" name="release" value={release} 
+                {/*<label for="release">release:</label>*/}
+                <input type="number" id="release" name="release" className="box" value={release}
                     onChange={(e) => setRelease(e.target.value)} />
-                <label for="content">content:</label>
-                <input type="text" id="content" name="content" value={content}
+                {/*<label for="content">content:</label>*/}
+                <input type="text" id="content" name="content" className="box" value={content}
                     onChange={(e) => setContent(e.target.value)} />
-                <input type="submit" value="Submit"/>
-                <div>{id}</div>
+                <button id="submit" className="box">Submit</button>
             </form>
         </div>
     )
