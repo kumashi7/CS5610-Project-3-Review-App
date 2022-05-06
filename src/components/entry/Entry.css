@@ -1,6 +1,12 @@
 * {
     font-family: 'Poppins', sans-serif;
 }
+
+.entry {
+    width: 800px;
+    opacity: 1.0;
+}
+
 .flex{
     display: flex;
 }
@@ -38,4 +44,6 @@ h3 {
     color: orange;
     opacity: 1.0;
 }
+
+
 
