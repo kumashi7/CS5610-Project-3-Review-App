@@ -39,7 +39,9 @@ export default function NavBar(props) {
                 <div className="dropdown">
                 <button className="dropbtn nav-font">{username}</button>
                     <div className="dropdown-content nav-font">
-                        <a href="entry">Create Entry</a>
+                        <Link to="/entry">
+                            Create Entry
+                        </Link>
                         <a href="./" onClick={logout}>Log out</a>
                     </div>
                 </div>

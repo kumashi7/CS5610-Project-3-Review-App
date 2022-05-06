@@ -39,6 +39,4 @@ app.get('*', function (req, res) {
 
 app.listen(process.env.PORT || 8000, () => {
   console.log('Starting server');
-  console.log(process.env.MONGO_URI);
-  console.log(process.env.SUPER_SECRET);
 });
