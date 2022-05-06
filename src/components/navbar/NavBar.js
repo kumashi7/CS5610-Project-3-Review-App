@@ -28,23 +28,6 @@ export default function NavBar(props) {
         .catch(error => console.log("Error logging out"));
     }
 
-    // const navSlide = () => {
-    //     const threeStripes = document.querySelector('.threeStripes');
-    //     const nav = document.querySelector('.nav-links');
-    //     const navLinks = document.querySelectorAll('.nav-links li');
-    //
-    //     threeStripes.addEventListener('click', () => {
-    //         nav.classList.toggle('nav-active');
-    //     });
-    //
-    //     navLinks.forEach((link, index) => {
-    //         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 5}s`;
-    //         console.log(index / 5);
-    //     });
-    // }
-    //
-    // navSlide();
-
     if (username) {
         return (
         <div>
@@ -78,7 +61,7 @@ export default function NavBar(props) {
 
 
     return (
-        <div>
+        <div className="body">
             <nav id="navbar">
                 <div className="logo"><h2>FRESH PINEAPPLE</h2>
                 </div>
@@ -101,4 +84,21 @@ export default function NavBar(props) {
             </nav>
         </div>
     )
+
+    // const navSlide = () => {
+    //     const threeStripes = document.querySelector('.threeStripes');
+    //     const nav = document.querySelector('.nav-links');
+    //     const navLinks = document.querySelectorAll('.nav-links li');
+    //
+    //     threeStripes.addEventListener('click', () => {
+    //         nav.classList.toggle('nav-active');
+    //     });
+    //
+    //     navLinks.forEach((link, index) => {
+    //         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 5}s`;
+    //         console.log(index / 5);
+    //     });
+    // }
+    //
+    // navSlide();
 }
