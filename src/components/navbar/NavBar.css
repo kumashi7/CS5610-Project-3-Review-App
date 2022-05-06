@@ -8,9 +8,12 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 8vh;
+    /* min-height: 8vh; */
+    height: 80px;
     background-color: yellow;
     font-family: 'Poppins', sans-serif;
+    /* padding-left: 5%; */
+    /* padding-right: 5%; */
 }
 
 .logo {
