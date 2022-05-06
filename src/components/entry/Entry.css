@@ -1,19 +1,41 @@
-.container {
-    margin-top: 20px;
-    border: 1px rgb(128, 128, 128, 0.5) solid;
-
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
+* {
+    font-family: 'Poppins', sans-serif;
 }
 .flex{
     display: flex;
 }
 
+.movieName {
+    font-size: 70px;
+    color: saddlebrown;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+}
+
+.movieInfo {
+    display: flex;
+    flex-direction: row;
+}
+
+.movieContent {
+    font-size: 20px;
+    padding: 30px;
+    border: 1px solid seagreen;
+    border-radius: 20px;
+    margin: 20px;
+}
+
+#year {
+    color: seagreen;
+}
+
 h3 {
-    border: 1px solid greenyellow;
     margin-left: 10px;
     margin-right: 10px;
     padding: 5px;
     border-radius: 0.5rem;
+    font-size: 25px;
+    color: orange;
+    opacity: 1.0;
 }
+

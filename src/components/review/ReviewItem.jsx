@@ -28,9 +28,9 @@ function ReviewItem(props) {
   
   let entryId = props.entryId;
   return props.list.map(({content, date, _id, user}) => 
-    <div>
-      <p>{date}</p>
-      <h6>{content}</h6>
+    <div className="item">
+      <p className="reviews">{date}</p>
+      <p className="content">{content}</p>
       { user === visitUser ? <button onClick={() => deleteReview({entryId: entryId, reviewId: _id})}>delete review</button> : <p></p>}
       <hr></hr>
     </div>

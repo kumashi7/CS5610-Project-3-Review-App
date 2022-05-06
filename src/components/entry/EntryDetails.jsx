@@ -61,10 +61,13 @@ export default function EntryDetails(props) {
 
   return (
     <div key={id}>
-      <h2>{entryDetails.title}</h2>
+      <h2 className="movieName">{entryDetails.title}</h2>
       <hr></hr>
-      <h3>{entryDetails.genre}</h3><h3>{entryDetails.release}</h3>
-      <div>{entryDetails.content}</div>
+        <div className="movieInfo">
+            <h3 id="year">{entryDetails.release}</h3>
+            <h3>{entryDetails.genre}</h3>
+        </div>
+      <div className="movieContent">{entryDetails.content}</div>
       <br></br><br></br>
       {entryDetails.user === currentUserId ? <button onClick={ () => deleteEntry({id})}>delete entry</button> : <p></p>}
       {entryDetails.user === currentUserId ? <Link to="/updateEntry" state ={{id: id}}><button>update entry</button></Link> : <p></p>}

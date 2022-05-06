@@ -1,16 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .container {
-    border: 1px rgb(128, 128, 128, 0.5) solid;
-    text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-top:50px;
-    padding-bottom: 50px;
+    display: flex;
+    flex-direction: row;
+    height: 500px;
+    width: 800px;
+    border: 1px solid seagreen;
+    margin: 50px auto auto;
 }
 
-.container div{
-    display: block;
+.form {
+    display: flex;
+    flex-direction: column;
+    flex: 50%;
+    height: 100%;
+    align-items: center;
+    background-color: yellow;
 }
 
-.click-button{
-    margin-top: 20px;
+.form h2{
+    font-size: 3rem;
+    font-family: Impact, 'Poppins', sans-serif;
+    margin: 40px;
+    color: saddlebrown;
+}
+
+.pineapple {
+    display: flex;
+    flex: 50%;
+    background-image:
+            url("https://www.kindpng.com/picc/m/106-1068878_lost-gardens-of-heligan-pineapples-hd-png-download.png");
+}
+
+.pineapple img {
+    width: 400px;
+    height: 100%;
+}
+
+.box {
+    padding: 12px;
+    width: 65%;
+    margin: 15px;
+    border: 1px solid seagreen;
+    outline: none;
+    border-radius: 20px;
+}
+
+#submit {
+    padding: 12px 30px;
+    width: 40%;
+    margin-top: 50px;
+    background-color: seagreen;
+    color: white;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
+
+#submit:hover {
+    cursor: pointer;
+    background-color: saddlebrown;
+}
+
+@media (max-width: 800px) {
+    .container {
+        flex-direction: row;
+    }
 }

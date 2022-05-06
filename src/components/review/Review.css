@@ -1,0 +1,18 @@
+.item {
+    background-color: white;
+    font-size: 30px;
+    padding: 20px;
+}
+
+.content {
+    font-size: 25px;
+}
+
+.reviews {
+    color: black;
+    font-size:15px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    padding: 5px;
+    width: 400px;
+}

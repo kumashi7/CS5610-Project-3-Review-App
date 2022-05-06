@@ -22,9 +22,10 @@ function App() {
     }
 
     return (
-        <div>
-            <EntryCard list={entryList} />
+        <div className="bg">
+            <EntryCard className="entry" list={entryList} />
         </div>
+
     );
 }
 

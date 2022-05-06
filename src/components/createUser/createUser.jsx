@@ -23,21 +23,13 @@ export default function CreateUser(props) {
 
     return (
         <div className="container">
-            <div>
-                <h1>Sign up</h1>
-            </div>
-            <div>
-                <h5>Username</h5>
-            </div>
-            <input value={username} onChange={e => setUsername(e.target.value)} />
-            <h5>
-                Password
-            </h5>
-            <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
-            <div>
-                <button onClick={createNewUser} className="click-button">
-                    Create User
-                </button>
+            <form action="" className="form">
+                <h2>SIGN UP</h2>
+                <input type="text" name="text" className="box" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} />
+                <input type="password" name="password" className="box" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} />
+                <button type="submit" id="submit" className="box" onClick={createNewUser}>Create User</button>
+            </form>
+            <div className="pineapple">
             </div>
         </div>
 

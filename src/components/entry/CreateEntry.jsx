@@ -28,7 +28,7 @@ export default function CreateEntry(props) {
           </h5>
           <input value={title} onChange={e => setTitle(e.target.value)} />
           <h5>
-              Release
+              Release Year
           </h5>
           <input type='number' value={release} onChange={e => setRelease(e.target.value)} />
           <h5>

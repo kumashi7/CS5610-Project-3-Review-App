@@ -28,15 +28,50 @@ export default function NavBar(props) {
         .catch(error => console.log("Error logging out"));
     }
 
+    // const navSlide = () => {
+    //     const threeStripes = document.querySelector('.threeStripes');
+    //     const nav = document.querySelector('.nav-links');
+    //     const navLinks = document.querySelectorAll('.nav-links li');
+    //
+    //     threeStripes.addEventListener('click', () => {
+    //         nav.classList.toggle('nav-active');
+    //     });
+    //
+    //     navLinks.forEach((link, index) => {
+    //         link.style.animation = `navLinkFade 0.5s ease forwards ${index / 5}s`;
+    //         console.log(index / 5);
+    //     });
+    // }
+    //
+    // navSlide();
+
     if (username) {
         return (
         <div>
             <nav id="navbar">
-                <a className="flex-nav-item" href="./">HOME</a>
-                {/* ref need to be changed? */}
-                <a className="flex-nav-item" href="./">{username}</a>
-                <a className="flex-nav-item" href="./" onClick={logout}>Log out</a>
-                <a className="flex-nav-item" href="entry">Create Entry</a>
+                <div className="logo">
+                    <h2>FRESH PINEAPPLE</h2>
+                </div>
+                <ul className="nav-links">
+                    <li>
+                        <a href="./">HOME</a>
+                        {/* ref need to be changed? */}
+                    </li>
+                    <li>
+                        <a href="./">{username}</a>
+                    </li>
+                    <li>
+                        <a href="./" onClick={logout}>LOG OUT</a>
+                    </li>
+                    <li>
+                        <a href="entry">CREATE ENTRY</a>
+                    </li>
+                </ul>
+                <div className="threeStripes">
+                    <div className="line1"></div>
+                    <div className="line2"></div>
+                    <div className="line3"></div>
+                </div>
             </nav>
         </div>)
     }
@@ -45,11 +80,25 @@ export default function NavBar(props) {
     return (
         <div>
             <nav id="navbar">
-                <a className="flex-nav-item" href="./">HOME</a>
-                <a className="flex-nav-item" href="Login">Log in</a>
-                <a className="flex-nav-item" href="createUser">Sign up</a>
+                <div className="logo"><h2>FRESH PINEAPPLE</h2>
+                </div>
+                <ul className="nav-links">
+                    <li>
+                        <a href="./">HOME</a>
+                    </li>
+                    <li>
+                        <a href="Login">LOG IN</a>
+                    </li>
+                    <li>
+                        <a href="createUser">SIGN UP</a>
+                    </li>
+                </ul>
+                <div className="threeStripes">
+                    <div className="line1"></div>
+                    <div className="line2"></div>
+                    <div className="line3"></div>
+                </div>
             </nav>
         </div>
     )
-
 }
