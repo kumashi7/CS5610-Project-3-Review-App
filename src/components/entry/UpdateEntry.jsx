@@ -24,11 +24,11 @@ export default function UpdateEntry(props) {
           });
     },[]);
 
-    if (!title) {
-        return (<div>
-            Loading entry sdafdaf details, please wait...
-        </div>)
-    }
+    // if (!title) {
+    //     return (<div>
+    //         Loading entry details, please wait...
+    //     </div>)
+    // }
 
     function updateEntryAxios(id, title, genre, release, content, event) {
         event.preventDefault()

@@ -15,7 +15,6 @@ module.exports = function(request, response, next) {
             } else {
                 //add 'username' as part of the request object so that the next function can use it
                 request.username = decoded.username;
-                console.log("valid token");
                 //next calls the following function in the route chain
                 next();// we do not stop the execution and continue find the next matching url
             }

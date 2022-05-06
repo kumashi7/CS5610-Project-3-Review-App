@@ -77,5 +77,11 @@ h4
     color: orange;
 }
 
+.entry-button{
+    padding-left: 20px;
+}
 
-
+.entry-layout{
+    padding-left: 10%;
+    padding-right: 10%;
+}

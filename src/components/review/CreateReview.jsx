@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Axios from 'axios';
-import './createReview.css'
+import './Review.css'
 
 export default function CreateComment({entryId}) {
   const [content, setContent] = useState('');

@@ -33,7 +33,7 @@ export default function NavBar(props) {
         <div>
             <nav id="navbar">
                 <div className="logo">
-                    <a href="./">FRESH PINEAPPLE</a>
+                    <a href="./" id="home">FRESH PINEAPPLE</a>
                 </div>
                 <div className="dropdown">
                 <button className="dropbtn nav-font">{username}</button>

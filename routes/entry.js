@@ -26,7 +26,7 @@ router.post('/create', auth, async function(request, response) {
     try {
         UserModel.getUserByUserName(username)
             .then(user => {
-                console.log("--------- user: " + user.username);
+                // console.log("--------- user: " + user.username);
                 const entry = {
                     title: title,
                     release: release,

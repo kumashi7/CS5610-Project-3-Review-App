@@ -60,7 +60,7 @@ export default function EntryDetails(props) {
   }
 
   return (
-    <div key={id}>
+    <div key={id} className="entry-layout bg">
       <h2 className="movieName">{entryDetails.title}</h2>
       <hr></hr>
         <div className="movieInfo">
@@ -69,8 +69,10 @@ export default function EntryDetails(props) {
         </div>
       <div className="movieContent">{entryDetails.content}</div>
       <br></br><br></br>
-      {entryDetails.user === currentUserId ? <button onClick={ () => deleteEntry({id})}>delete entry</button> : <p></p>}
-      {entryDetails.user === currentUserId ? <Link to="/updateEntry" state ={{id: id}}><button>update entry</button></Link> : <p></p>}
+      <div className='entry-button'>
+        {entryDetails.user === currentUserId ? <button onClick={ () => deleteEntry({id})}>delete entry</button> : <p></p>}
+        {entryDetails.user === currentUserId ? <Link to="/updateEntry" state ={{id: id}}><button>update entry</button></Link> : <p></p>}
+      </div>
       <br></br><br></br>
       {currentUserId !== undefined ? <CreateReview entryId={id} /> : <p></p>}
       <hr></hr>

@@ -9,7 +9,7 @@ router.post('/authenticate', function(request, response){
     const {username,password} = request.body;
     return UserModel.getUserByUserName(username)
         .then(user => {
-            console.log("authenticate - user: " + user);
+            // console.log("authenticate - user: " + user);
             if(user.password === password){
                 const payload = {
                     username: username,
@@ -29,7 +29,7 @@ router.post('/authenticate', function(request, response){
 
 //whether the current user is logged in
 router.get('/isLoggedIn', auth_middleware, function(request, response) {
-    console.log("send back response - isLoggedIn: " + request.username);
+    // console.log("send back response - isLoggedIn: " + request.username);
     return response.status(200).send({username: request.username});
 })
 
@@ -57,7 +57,7 @@ router.get('/:username', function(request, response){
     const username = request.params.username;
     return UserModel.getUserByUserName(username)
         .then(user => {
-            console.log(user);
+            // console.log(user);
             response.status(200).send(user);
         })
         .catch(error => {
@@ -85,7 +85,7 @@ router.post('/', function(request, response){
                 const token = jwt.sign(payload, "SUPER_SECRET", {
                     expiresIn: '14d'
                 });
-                console.log("successfully create!");
+                // console.log("successfully create!");
                 return response.cookie('token', token, {httpOnly: true})
                     .status(200).send({username});
             } 
