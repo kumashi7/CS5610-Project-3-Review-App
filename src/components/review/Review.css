@@ -1,0 +1,24 @@
+.item {
+    font-size: 30px;
+    padding: 20px;
+}
+
+.content {
+    font-size: 20px;
+    color: saddlebrown;
+    font-weight: bold;
+}
+
+.reviews {
+    color: black;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    padding: 5px;
+    width: 400px;
+}
+
+.addReview {
+    padding-left: 20px;
+    padding-bottom: 20px;
+}

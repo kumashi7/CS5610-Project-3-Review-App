@@ -3,10 +3,10 @@ const router = express.Router();
 const EntryModel = require('./model/entry.model');
 const ReviewModel = require('./model/review.model');
 const UserModel = require('./model/user.model');
+const auth = require('./middlware/auth_middleware');
 
-// @route    POST /entry
-// @desc     Create a post
-router.post('/create', async function(request, response) {
+// create entry
+router.post('/create', auth, async function (request, response) {
     const title = request.body.title;
     const release = request.body.release;
     const genre = request.body.genre;
@@ -24,9 +24,9 @@ router.post('/create', async function(request, response) {
     }
 
     try {
-        UserModel.getUserByUserName("app1")
+        UserModel.getUserByUserName(username)
             .then(user => {
-                console.log("--------- user: " + user.username);
+                // console.log("--------- user: " + user.username);
                 const entry = {
                     title: title,
                     release: release,
@@ -35,9 +35,9 @@ router.post('/create', async function(request, response) {
                     user: user._id
                 }
                 return EntryModel.createEntry(entry)
-                .then(entry => {
-                    response.status(200).send(entry);
-                });
+                    .then(entry => {
+                        response.status(200).send(entry);
+                    });
             })
     } catch (error) {
         console.error(error.message);
@@ -45,20 +45,21 @@ router.post('/create', async function(request, response) {
     }
 });
 
-
-router.get('/:id', async function(request, response) {
+// get entry
+router.get('/:id', async function (request, response) {
     const entryId = request.params.id
 
     return EntryModel.getEntryById(entryId)
         .then(entry => {
-                response.status(200).send(entry);
+            response.status(200).send(entry);
         })
         .catch(error => {
             response.status(400).send(error);
         })
 });
 
-router.delete('/:id', async function(request, response) {
+// delete entry
+router.delete('/:id', async function (request, response) {
     const entryId = request.params.id
 
     return EntryModel.deleteEntryById(entryId)
@@ -70,7 +71,8 @@ router.delete('/:id', async function(request, response) {
         })
 });
 
-router.put('/:id', async function(request, response) {
+// update entry
+router.put('/:id', async function (request, response) {
     const entryId = request.params.id
     const title = request.body.title
     const release = request.body.release;
@@ -90,11 +92,12 @@ router.put('/:id', async function(request, response) {
         })
 });
 
-router.get('/', function(request, response) {
+// get all entries
+router.get('/', function (request, response) {
     try {
-        EntryModel.getAllEntry().then(function(entry) {
+        EntryModel.getAllEntry().then(function (entry) {
             response.status(200);
-            return response.send(entry); 
+            return response.send(entry);
         });
     } catch (error) {
         console.error(error.message);
@@ -102,26 +105,18 @@ router.get('/', function(request, response) {
     }
 });
 
-// get all reviews of an entry
-// router.get('/:id/review/', function(request, response) {
-//     try {
-//         response.send("hello");
-//     } catch (error) {
-//         console.error(error.message);
-//         response.status(400).send(error);
-//     }
-// });
-
 // Add review
-router.post('/:id/review/', function(request, response) {
+router.post('/:id/review/', auth, function (request, response) {
     try {
         const content = request.body.content;
         const entryId = request.params.id;
+        const username = request.username;
+
         if (!content) {
             response.status(401).send("Missing content.");
         }
 
-        UserModel.getUserByUserName("app1")
+        UserModel.getUserByUserName(username)
             .then(user => {
                 console.log("--------- comment user: " + user.username);
                 const review = {
@@ -137,21 +132,19 @@ router.post('/:id/review/', function(request, response) {
 });
 
 // get all reviews given an id
-router.get('/:id/review/', function(request, response) {
+router.get('/:id/review/', function (request, response) {
     const entryId = request.params.id;
     return EntryModel.getEntryWithReviews(entryId)
-    .then(entry => {
-        // console.log("reviews!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-        // console.log(entry.reviews);
-        response.status(200).send(entry.reviews);
-    })
-    .catch(error => {
-        response.status(400).send(entry.reviews);
-    })
+        .then(entry => {
+            response.status(200).send(entry.reviews);
+        })
+        .catch(error => {
+            response.status(400).send(error);
+        })
 });
 
-
-router.delete('/:id/:reviewid', async function(request, response) {
+// delete review
+router.delete('/:id/:reviewid', async function (request, response) {
     try {
         const entryId = request.params.id;
         const reviewId = request.params.reviewid;
@@ -160,11 +153,11 @@ router.delete('/:id/:reviewid', async function(request, response) {
         console.log("deteled review inside");
         console.log(entryId);
         EntryModel.getEntryById(entryId)
-                .then(entry => {
-                    let oldReviews = entry.reviews;
-                    let newReviews = oldReviews.filter(r => r._id != reviewId)
-                    return EntryModel.updateEntryReviewById(entryId, newReviews);
-                });
+            .then(entry => {
+                let oldReviews = entry.reviews;
+                let newReviews = oldReviews.filter(r => r._id != reviewId)
+                return EntryModel.updateEntryReviewById(entryId, newReviews);
+            });
     } catch (error) {
         console.error(error.message);
         response.status(400).send(error);

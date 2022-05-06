@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from 'react-router';
 import "./NavBar.css"
+import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
 
@@ -32,24 +33,36 @@ export default function NavBar(props) {
         return (
         <div>
             <nav id="navbar">
-                <a className="flex-nav-item" href="./">HOME</a>
-                {/* ref need to be changed? */}
-                <a className="flex-nav-item" href="./">{username}</a>
-                <a className="flex-nav-item" href="./" onClick={logout}>Log out</a>
-                <a className="flex-nav-item" href="entry">Create Entry</a>
+                <div className="logo">
+                    <a href="./" id="home">FRESH PINEAPPLE</a>
+                </div>
+                <div className="dropdown">
+                <button className="dropbtn nav-font">{username}</button>
+                    <div className="dropdown-content nav-font">
+                        <a href="entry">Create Entry</a>
+                        <a href="./" onClick={logout}>Log out</a>
+                    </div>
+                </div>
             </nav>
         </div>)
     }
 
 
     return (
-        <div>
+        <div className="body">
             <nav id="navbar">
-                <a className="flex-nav-item" href="./">HOME</a>
-                <a className="flex-nav-item" href="Login">Log in</a>
-                <a className="flex-nav-item" href="createUser">Sign up</a>
+                <div className="logo">
+                    <a href="./">FRESH PINEAPPLE</a>
+                </div>
+                <ul className="nav-links">
+                    <li>
+                        <a href="Login">LOG IN</a>
+                    </li>
+                    <li>
+                        <a href="createUser">SIGN UP</a>
+                    </li>
+                </ul>
             </nav>
         </div>
     )
-
 }
