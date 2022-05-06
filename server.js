@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const uri = process.env.MONGO_URI;
+const uri = "mongodb+srv://reviewapp2022:qwer1234@reviewappdb.lma2n.mongodb.net/reviewapp_db?retryWrites=true&w=majority";
 const cookieParser = require('cookie-parser');
 
 const entryRouter = require('./routes/entry');
@@ -39,4 +39,6 @@ app.get('*', function (req, res) {
 
 app.listen(process.env.PORT || 8000, () => {
   console.log('Starting server');
+  // console.log(process.env.REACT_APP_MONGO_URI);
+  // console.log(process.env.REACT_APP_SUPER_SECRET);
 });
